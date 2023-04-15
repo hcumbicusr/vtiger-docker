@@ -7,13 +7,13 @@
 2- Configura las variables de entorno para mysql
 #
 
-`
+```
 MYSQL_HOST=mysql
 MYSQL_ROOT_PASSWORD=SuperSecret
 MYSQL_DATABASE=vtiger
 MYSQL_USER=vtiger
 MYSQL_PASSWORD=secret
-`
+```
 
 #
 *Si instalaste vtiger desde el contenedor, puedes copiar el archivo config.inc.php a tu carpeta local luego de desplegar el contenedor con el siguiente comando:*
@@ -25,14 +25,14 @@ MYSQL_PASSWORD=secret
 #
 Para usar variables de entorno necesita las siguientes variables de entorno:
 
-`
+```
 VT_SITE_URL=http://vtiger.misitioweb.com/
 MYSQL_HOST=mysql
 MYSQL_ROOT_PASSWORD=SuperSecret
 MYSQL_DATABASE=vtiger
 MYSQL_USER=vtiger
 MYSQL_PASSWORD=secret
-`
+```
 #
 - Construir y desplegar imagen
 > docker build -t hcumbicusr/vtiger:7.5.0 .
