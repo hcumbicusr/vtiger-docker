@@ -38,4 +38,4 @@ volumes:
     driver_opts:
      type: 'none'
      o: 'bind'
-     device: '/d/00DESARROLLO/PHP/vtiger/7.5.0/vtigercrm'
+     device: '/d/00DESARROLLO/PHP/vtiger-docker/7.5.0/vtigercrm'
