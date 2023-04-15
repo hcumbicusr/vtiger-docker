@@ -1,0 +1,41 @@
+version: '3'
+
+services:
+  vtiger:
+    image: hcumbicusr/vtiger:7.5.0
+    env_file: .env
+    container_name: vtiger750
+    restart: unless-stopped
+    ports:
+      - 8090:80
+    volumes:
+      - vtiger750:/var/www/html
+    depends_on:
+      mysql:
+        condition: service_healthy
+    links:
+      - mysql
+
+  mysql:
+    image: mysql:8.0
+    env_file: .env
+    container_name: mysql80
+    restart: unless-stopped
+    command: mysqld --sql_mode="" --character-set-server=utf8 --collation-server=utf8_unicode_ci --init-connect='SET NAMES UTF8;' --innodb-flush-log-at-trx-commit=0 --default-authentication-plugin=mysql_native_password
+    healthcheck:
+      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
+      interval: 5s
+      retries: 5
+    ports:
+      - 3307:3306
+    volumes:
+      - mysql80:/var/lib/mysql
+
+volumes:
+  mysql80:
+  vtiger750:
+    driver: local
+    driver_opts:
+     type: 'none'
+     o: 'bind'
+     device: '/d/00DESARROLLO/PHP/vtiger/7.5.0/vtigercrm'
